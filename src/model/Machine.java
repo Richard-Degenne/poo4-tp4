@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
@@ -60,7 +61,7 @@ public class Machine implements Serializable {
     private Workshop workshop;
     
     public Machine() {
-        tasks = new HashSet<>();
+        tasks = new ArrayList<>();
         
         available = new Date(System.currentTimeMillis());
     }
@@ -151,7 +152,7 @@ public class Machine implements Serializable {
             return false;
         }
         Machine other = (Machine) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.tasks == null && other.tasks != null) || (this.tasks != null && !this.tasks.equals(other.tasks))) {
             return false;
         }
         return true;

@@ -14,6 +14,18 @@ import model.Machine;
  * @author richou
  */
 public class MachineJpaDao extends JpaDao<Machine> implements MachineDao {
+    
+    private static MachineJpaDao instance;
+    
+    private MachineJpaDao() {
+        
+    }
+    
+    public static MachineJpaDao getInstance() {
+        if(instance == null)
+            instance = new MachineJpaDao();
+        return instance;
+    }
 
     @Override
     public Machine find(long id) {

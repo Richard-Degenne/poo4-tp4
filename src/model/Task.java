@@ -44,13 +44,13 @@ public class Task implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "length")
+    @Column(name = "`length`")
     private int length;
-    @Column(name = "start")
+    @Column(name = "`start`")
     @Temporal(TemporalType.TIMESTAMP)
     private Date start;
     @Basic(optional = false)
-    @Column(name = "limit")
+    @Column(name = "`limit`")
     @Temporal(TemporalType.TIMESTAMP)
     private Date limit;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation

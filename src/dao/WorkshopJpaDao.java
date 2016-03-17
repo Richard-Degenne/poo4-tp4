@@ -14,6 +14,18 @@ import model.Workshop;
  * @author richou
  */
 public class WorkshopJpaDao extends JpaDao<Workshop> implements WorkshopDao {
+    
+    private static WorkshopJpaDao instance;
+    
+    private WorkshopJpaDao() {
+        
+    }
+    
+    public static WorkshopJpaDao getInstance() {
+        if(instance == null)
+            instance = new WorkshopJpaDao();
+        return instance;
+    }
 
     @Override
     public Workshop find(long id) {
@@ -42,11 +54,5 @@ public class WorkshopJpaDao extends JpaDao<Workshop> implements WorkshopDao {
     @Override
     public Workshop findFirstAvailable() {
         return (Workshop) em.createNamedQuery("Workshop.findAllOrderedByAvailable").setMaxResults(1).getResultList().get(0);
-    }
-    
-    public static void main(String[] args) {
-        WorkshopJpaDao wjd = new WorkshopJpaDao();
-        
-        wjd.deleteAll();
     }
 }

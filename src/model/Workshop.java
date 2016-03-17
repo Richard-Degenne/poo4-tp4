@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
@@ -54,7 +55,7 @@ public class Workshop implements Serializable {
     private Collection<Machine> machines;
 
     public Workshop() {
-        machines = new HashSet<>();
+        machines = new ArrayList<>();
         
         available = new Date(System.currentTimeMillis());
     }
@@ -115,7 +116,7 @@ public class Workshop implements Serializable {
             return false;
         }
         Workshop other = (Workshop) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.machines == null && other.machines != null) || (this.machines != null && !this.machines.equals(other.machines))) {
             return false;
         }
         return true;

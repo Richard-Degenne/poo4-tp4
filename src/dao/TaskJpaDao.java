@@ -14,6 +14,18 @@ import model.Task;
  * @author richou
  */
 public class TaskJpaDao extends JpaDao<Task> implements TaskDao {
+    
+    private static TaskJpaDao instance;
+    
+    private TaskJpaDao() {
+        
+    }
+    
+    public static TaskJpaDao getInstance() {
+        if(instance == null)
+            instance = new TaskJpaDao();
+        return instance;
+    }
 
     @Override
     public Task find(long id) {
