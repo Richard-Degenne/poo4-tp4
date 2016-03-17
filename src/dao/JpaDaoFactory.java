@@ -9,17 +9,24 @@ package dao;
  *
  * @author richou
  */
-public class JpaDaoFactory {
+public class JpaDaoFactory extends DaoFactory {
     
-    public static WorkshopJpaDao getWorkshopDao() {
+    protected JpaDaoFactory() {
+        
+    }
+    
+    @Override
+    public WorkshopJpaDao getWorkshopDao() {
         return WorkshopJpaDao.getInstance();
     }
     
-    public static MachineJpaDao getMachineDao() {
+    @Override
+    public MachineJpaDao getMachineDao() {
         return MachineJpaDao.getInstance();
     }
     
-    public static TaskJpaDao getTaskDao() {
+    @Override
+    public TaskJpaDao getTaskDao() {
         return TaskJpaDao.getInstance();
     }
 }
