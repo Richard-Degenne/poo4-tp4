@@ -12,5 +12,5 @@ import model.Machine;
  * @author richou
  */
 public interface MachineDao extends Dao<Machine> {
-    
+    public Machine findFirstAvailable();
 }

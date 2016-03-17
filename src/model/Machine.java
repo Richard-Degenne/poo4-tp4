@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Machine.findAll", query = "SELECT m FROM Machine m"),
     @NamedQuery(name = "Machine.findById", query = "SELECT m FROM Machine m WHERE m.id = :id"),
+    @NamedQuery(name = "Machine.findAllOrderedByAvailable", query = "SELECT m FROM Machine m ORDER BY m.available"),
     @NamedQuery(name = "Machine.deleteAll", query = "DELETE FROM Machine")})
 public class Machine implements Serializable {
 

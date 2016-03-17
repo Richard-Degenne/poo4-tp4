@@ -6,8 +6,11 @@
 package dao;
 
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.EntityTransaction;
 import model.Machine;
+import model.Task;
+import model.Workshop;
 
 /**
  *
@@ -29,7 +32,7 @@ public class MachineJpaDao extends JpaDao<Machine> implements MachineDao {
 
     @Override
     public Machine find(long id) {
-        return em.find(Machine.class, id);
+        return em.find(Machine.class, (Integer.valueOf((int) id)));
     }
 
     @Override
@@ -50,5 +53,9 @@ public class MachineJpaDao extends JpaDao<Machine> implements MachineDao {
     public void close() {
         em.close();
     }
-    
+
+    @Override
+    public Machine findFirstAvailable() {
+        return (Machine) em.createNamedQuery("Machine.findAllOrderedByAvailable").setMaxResults(1).getResultList().get(0);
+    }
 }

@@ -29,7 +29,7 @@ public class TaskJpaDao extends JpaDao<Task> implements TaskDao {
 
     @Override
     public Task find(long id) {
-        return em.find(Task.class, id);
+        return em.find(Task.class, Integer.valueOf((int) id));
     }
 
     @Override
