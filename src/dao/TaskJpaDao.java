@@ -21,7 +21,7 @@ public class TaskJpaDao extends JpaDao<Task> implements TaskDao {
         
     }
     
-    public static TaskJpaDao getInstance() {
+    protected static TaskJpaDao getInstance() {
         if(instance == null)
             instance = new TaskJpaDao();
         return instance;

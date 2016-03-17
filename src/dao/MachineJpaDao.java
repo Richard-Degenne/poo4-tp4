@@ -21,7 +21,7 @@ public class MachineJpaDao extends JpaDao<Machine> implements MachineDao {
         
     }
     
-    public static MachineJpaDao getInstance() {
+    protected static MachineJpaDao getInstance() {
         if(instance == null)
             instance = new MachineJpaDao();
         return instance;

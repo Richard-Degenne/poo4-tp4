@@ -21,7 +21,7 @@ public class WorkshopJpaDao extends JpaDao<Workshop> implements WorkshopDao {
         
     }
     
-    public static WorkshopJpaDao getInstance() {
+    protected static WorkshopJpaDao getInstance() {
         if(instance == null)
             instance = new WorkshopJpaDao();
         return instance;
