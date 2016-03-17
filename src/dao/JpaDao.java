@@ -24,6 +24,9 @@ public abstract class JpaDao<T> implements Dao<T>{
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
         em = emf.createEntityManager();
     }
+    
+    @Override
+    public abstract T find(long id);
             
     @Override
     public boolean create(T t) {

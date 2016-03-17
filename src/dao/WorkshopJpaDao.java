@@ -29,7 +29,7 @@ public class WorkshopJpaDao extends JpaDao<Workshop> implements WorkshopDao {
 
     @Override
     public Workshop find(long id) {
-        return em.find(Workshop.class, id);
+        return em.find(Workshop.class, Integer.valueOf((int) id));
     }
 
     @Override

@@ -34,11 +34,9 @@ public class Scheduler {
         for (Task t : td.findAllNotScheduled()) {
             Machine m = md.findFirstAvailable();
             m.addTask(t);
-            
-            System.out.println(t + " added to " + m + "\n");
-            
-            td.update(t);
+                        
             md.update(m);
+            td.update(t);
         }
     }
 }

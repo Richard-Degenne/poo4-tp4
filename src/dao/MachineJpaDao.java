@@ -32,7 +32,7 @@ public class MachineJpaDao extends JpaDao<Machine> implements MachineDao {
 
     @Override
     public Machine find(long id) {
-        return em.find(Machine.class, id);
+        return em.find(Machine.class, (Integer.valueOf((int) id)));
     }
 
     @Override
@@ -57,16 +57,5 @@ public class MachineJpaDao extends JpaDao<Machine> implements MachineDao {
     @Override
     public Machine findFirstAvailable() {
         return (Machine) em.createNamedQuery("Machine.findAllOrderedByAvailable").setMaxResults(1).getResultList().get(0);
-    }
-    
-    public static void main(String[] args) {
-        MachineJpaDao mjd = new MachineJpaDao();
-        Machine m = new Machine(10, new Date(System.currentTimeMillis()), 0);
-        
-        mjd.create(m);
-        m.addTask(new Task(42, new Date(System.currentTimeMillis() + 10000), 10));
-        mjd.update(m);
-        
-        System.out.println(mjd.find(m.getId()));
     }
 }
