@@ -5,6 +5,8 @@
  */
 package tests;
 
+import dao.DaoFactory;
+import dao.DaoFactory.PersistenceType;
 import dao.JpaDaoFactory;
 import dao.MachineJpaDao;
 import dao.TaskJpaDao;
@@ -30,9 +32,10 @@ public class Test2 {
         Task t3 = new Task(70, new Date(time+180*60000), 4);
         Task t4 = new Task(60, new Date(time+300*60000), 12);
 
-        WorkshopJpaDao wjd = JpaDaoFactory.getWorkshopDao();
-        MachineJpaDao mjd = JpaDaoFactory.getMachineDao();
-        TaskJpaDao tjd = JpaDaoFactory.getTaskDao();
+        JpaDaoFactory jdf = (JpaDaoFactory) DaoFactory.getDaoFactory(PersistenceType.JPA);
+        WorkshopJpaDao wjd = jdf.getWorkshopDao();
+        MachineJpaDao mjd = jdf.getMachineDao();
+        TaskJpaDao tjd = jdf.getTaskDao();
         
         tjd.deleteAll();
         mjd.deleteAll();
